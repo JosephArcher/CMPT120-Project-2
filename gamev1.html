@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+  
+ <html>
+      <head>
+	 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	 <meta name="author" content="Joe Archer" />
+ 	 <title>My First Game</title>
+	<style>
+ 	   .footer {font-style: italic;}
+	     
+	 </style>
+	 <script type = "text/javascript">
+		var score = 0;
+		var north = new Boolean (true);
+		var east = new Boolean (true);
+		var south = new Boolean (true);
+		var west = new Boolean (true);
+
+
+		
+		function gonorth() { 
+		   var message = "You head north through the propped door into a dark room. You cant see anything it would be best to turn around"
+		   alert(message);
+		   if (north == true) {
+		     score = score + 5;
+		     north = false;
+		     }
+		   else {
+		     score = score +0;
+		   }		
+	}
+		
+	
+		 function goeast() {
+		 var message = "You head east through the door, it is a barely light room, maybe with a lantern you will be able to find something"
+		 alert(message);
+		   if (east == true) {
+		     score = score + 5;
+		     east = false;
+		     }
+		   else {
+		     score = score +0;
+		   }		
+		
+	}
+	
+		function gosouth() {
+		var message = "You head south through the door, you find a room with a lit " +  
+                              "fireplace and an old wooden rocking. A mysterious figure is sitting in it, maybe he has something to say"
+		 alert(message);
+		 if (south == true) {
+		     score = score + 5;
+		     south = false;
+		     }
+		 else {
+		     score = score +0;
+		 }	
+	}
+	
+		 function gowest() {
+		var message = "You west through the door into a room fully light by candles. There is nothing imporant in this room and it appears to leadno where it would be best to turn around"
+		alert(message);
+		if (west == true) {
+		     score = score + 5;
+		     west = false;
+		     }
+		 else {
+		     score = score +0;
+		 }
+
+	}	
+		 function checkscore() {
+		 var message = "your current score is "
+		 alert(message);
+		 alert (score);
+	}   
+		
+	
+			
+	</script>
+      </head>
+      <body> 
+		Haunted House By Joe Archer
+		<br><br><br>
+		Email me at <a href = "mailto:Joseph.Archer1@marist.edu"> Joseph Archer </a>
+		<br>
+		<textarea rows="7" cols="55"> Player awakens in the middle of a darkened room. Candles light a propped door to the north. A lantern filled with oil and a box
+		o matches can be found on a table next to you. Three other exits can be seen. A lantern might be needed to explore the north exit.
+		</textarea>
+		<br>
+	    	<input type = "button"
+	     	value = "North"
+	   	   onclick = "gonorth();">
+	
+		<input type = "button"
+	     	value = "east"
+	   	   onclick = "goeast();">
+		
+		<input type = "button"
+	     	value = "south"
+	   	   onclick = "gosouth();">
+	
+		<input type = "button"
+	     	value = "west"
+	   	   onclick = "gowest();">
+		<br> <br> <br>
+		<input type = "button"
+	     	value = "Check Score"
+	   	   onclick = "checkscore();">
+		
+	
+      </body>
+   </html>
