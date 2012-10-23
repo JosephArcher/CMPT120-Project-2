@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="author" content="Joe Archer" />
+<title>My First Game</title>
+<style>
+.footer {font-style: italic;}
+</style>
+<script type = "text/javascript">
+
+var first_firstfloorstairwell = true;
+var first_fireplaceroom = true;
+        var first_kitchen = true;
+        var first_grandroom = true;
+        var first_diningroom = true;
+        var first_ballroom = true;
+        var first_foyer = true;
+        var first_atticstairwell = true;
+        var first_basementstairwell= true;
+        var first_basementstorageroom= true;
+        var first_basementwineceller= true;
+        var first_basementbathroom= true;
+        var first_basementbreakerroom= true;
+        var first_basementtoolroom= true;
+        var first_basementshrineroom= true;
+        var first_basementbillardroom= true;
+        var first_basementwashroom= true;
+        var first_atticstairwellup= true;
+        var first_atticgeustroom= true;
+        var first_atticmasterbedroom= true;
+        var first_atticbalcony= true;
+        var first_atticbathroom= true;
+        var first_atticcloset= true;
+        var first_atticparlor= true;
+        var first_atticstudy= true;
+        var first_atticshitroom= true;
+
+        var axe = false;
+        var lights = false;
+        var key = false;
+        var knife = false;
+
+        var xcord = 0;
+        var ycord = 0;
+        var zcord = 0;
+
+        var score = 0;
+
+        var numberofturns = 0;
+
+        function goup() {
+
+           zcord = zcord + 1;
+        }
+
+        function godown() {
+
+           zcord = zcord -1;
+        }
+
+        function goNorth() {
+
+           ycord = ycord + 1;
+           xcord = xcord + 0;
+           numberofturns = numberofturns + 1;
+           updateTurns(numberofturns);
+           checkLoc();
+        }
+
+        function goEast() {
+
+           xcord = xcord + 1;
+           ycord = ycord + 0;
+           numberofturns = numberofturns + 1;
+           updateTurns(numberofturns);
+           checkLoc();
+        }
+
+        function goSouth() {
+
+           xcord = xcord + 0;
+           ycord = ycord - 1;
+           numberofturns = numberofturns + 1;
+           updateTurns(numberofturns);
+           checkLoc();
+        }
+
+        function goWest() {
+
+           xcord = xcord - 1;
+           ycord = ycord + 0;
+           numberofturns = numberofturns + 1;
+           updateTurns(numberofturns);
+           checkLoc();
+        }
+
+        function first_fireplaceroom_score () { // the next 8 functions handle the score and the first visit for each room on the first floor
+
+           if (first_fireplaceroom === true) {
+              score = score + 5;
+              updateScore();
+              first_fireplaceroom = false;
+           }
+           else {
+              score = score + 0;
+           }
+        }
+
+        function first_foyer_score () {
+
+           if (first_foyer === true) {
+              score = score + 5;
+              updateScore();
+              first_foyer = false;
+           }
+        else {
+              score = score + 0;
+           }
+        }
+
+        function first_diningroom_score () {
+
+           if (first_diningroom === true) {
+              score = score + 5;
+              updateScore();
+              first_diningroom = false;
+           }
+        else {
+              score = score + 0;
+           }
+        }
+
+        function first_grandroom_score () {
+
+           if (first_grandroom === true) {
+              score = score + 5;
+              updateScore();
+              first_grandroom = false;
+           }
+        else {
+              score = score + 0;
+           }
+        }
+
+        function first_kitchen_score () {
+
+        if (first_kitchen === true) {
+        score = score + 5;
+        updateScore();
+        first_kitchen = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_firstfloorstairwell_score () {
+
+        if (first_firstfloorstairwell === true) {
+        score = score + 5;
+        updateScore();
+        first_firstfloorstairwell = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticstairwellup_score () {
+
+        if (first_atticstairwellup === true) {
+        score = score + 5;
+        updateScore();
+        first_atticstairwellup = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_ballroom_score () {
+
+        if (first_ballroom === true) {
+        score = score + 5;
+        updateScore();
+        first_ballroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementstairwell_score () {
+
+        if (first_basementstairwell === true) {
+        score = score + 5;
+        updateScore();
+        first_basementstairwell = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementstorageroom_score () {
+
+        if (first_basementstorageroom === true) {
+        score = score + 5;
+        updateScore();
+        first_basementstorageroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementwineceller_score () {
+
+        if (first_basementwineceller === true) {
+        score = score + 5;
+        updateScore();
+        first_basementwineceller = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementbathroom_score () {
+
+        if (first_basementbathroom=== true) {
+        score = score + 5;
+        updateScore();
+        first_basementbathroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementbreakerroom_score () {
+
+        if (first_basementbreakerroom === true) {
+        score = score + 5;
+        updateScore();
+        first_basementbreakerroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementtoolroom_score () {
+
+        if (first_basementtoolroom === true) {
+        score = score + 5;
+        updateScore();
+        first_basementtoolroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementshrineroom_score () {
+
+        if (first_basementshrineroom === true) {
+        score = score + 5;
+        updateScore();
+        first_basementshrineroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementbillardroom_score () {
+
+        if (first_basementbillardroom === true) {
+        score = score + 5;
+        updateScore();
+        first_basementbillardroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_basementwashroom_score () {
+
+        if (first_basementwashroom === true) {
+        score = score + 5;
+        updateScore();
+        first_basementwashroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticstairwell_score () {
+
+        if (first_atticstairwell === true) {
+        score = score + 5;
+        updateScore();
+        first_atticstairwell = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticgeustroom_score () {
+
+        if (first_atticgeustroom === true) {
+        score = score + 5;
+        updateScore();
+        first_atticgeustroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticmasterbedroom_score () {
+
+        if (first_atticmasterbedroom === true) {
+        score = score + 5;
+        updateScore();
+        first_atticmasterbedroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticbalcony_score () {
+
+        if (first_atticbalcony === true) {
+        score = score + 5;
+        updateScore();
+        first_atticbalcony = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticbathroom_score () {
+
+        if (first_atticbathroom === true) {
+        score = score + 5;
+        updateScore();
+        first_atticbathroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticcloset_score () {
+
+        if (first_atticcloset === true) {
+        score = score + 5;
+        updateScore();
+        first_atticcloset = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticparlor_score () {
+
+        if (first_atticparlor === true) {
+        score = score + 5;
+        updateScore();
+        first_atticparlor = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticstudy_score () {
+
+        if (first_atticstudy === true) {
+        score = score + 5;
+        updateScore();
+        first_atticstudy = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function first_atticshitroom_score () {
+
+        if (first_atticshitroom === true) {
+        score = score + 5;
+        updateScore();
+        first_atticshitroom = false;
+        }
+        else {
+        score = score + 0;
+        }
+        }
+
+        function firstfloorstairwell_check () { // this is the start of the locations
+
+        if ( xcord === -1 && ycord === 1&& zcord ===0) {
+
+        northbutton.disabled = true;
+        westbutton.disabled = true;
+        var message = "You enter a room with staircase leading down... type -down- to go down ";
+        var location = "First Floor StairWell";
+        updateLocation(location);
+        updateDisplay(message);
+        first_firstfloorstairwell_score();
+        }
+        }
+
+        function fireplaceroom_check () {
+
+        if ( xcord === 0 && ycord === 1 && zcord ===0) {
+
+        northbutton.disabled = true;
+        var message = "You move into the Fire Place Room"
+        var location = "Fireplace Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_fireplaceroom_score();
+        }
+        }
+
+        function kitchen_check () {
+
+        if ( xcord === 1 && ycord === 1&& zcord ===0) {
+
+        northbutton.disabled = true;
+        eastbutton.disabled = true;
+        var message = "You enter the kitchen, pots and pans are scattered about and a knife is lying on the table type --pickup-- to pick up the knife";
+        var location = "Kitchen";
+        updateDisplay(message);
+        updateLocation(location);
+        first_kitchen_score();
+        }
+        }
+
+        function grandroom_check () {
+
+        if ( xcord === -1 && ycord === 0&& zcord ===0) {
+
+        westbutton.disabled = true;
+        var message = "You head into the Grand Room, This room is pointless right now";
+        var location = "Grand Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_grandroom_score();
+        }
+        }
+
+        function startroom_check () {
+
+        if ( xcord === 0 && ycord === 0&& zcord ===0) {
+
+        var message = " This is the room you start in";
+        var location = "Starting Room";
+        updateDisplay(message); // passes as a parameter and updates the text area
+        updateLocation(location); // passes as a parameter and updates a text box with location
+        // i assume that because you start in this room if you return you DO NOT gain 5 points
+        }
+        }
+
+        function diningroom_check () {
+
+        if ( xcord === 1 && ycord === 0&& zcord ===0) {
+
+        eastbutton.disabled = true;
+        var message = "You move ino the Dining Room, The room is empty however the table is set like someone is ready to eat";
+        var location = "Dining Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_diningroom_score();
+        }
+        }
+
+        function ballroom_check () {
+
+        if ( xcord === -1 && ycord === -1 && zcord ===0) {
+
+        southbutton.disabled = true;
+        westbutton.disabled = true;
+        var message = "You enter the Ball Room, Crazy stuff happens here ";
+        var location = "Ball Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_ballroom_score();
+        }
+        }
+
+        function foyer_check () {
+
+        if ( xcord === 0 && ycord === -1&& zcord ===0) {
+
+        southbutton.disabled = true;
+        var message = "You Move Into The Foyer and you see the Front Door, however the door cannot be opened without the lights on,a key, and the axe,if you meet these conditions type --iwin-- and win"
+        var location = "Foyer Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_foyer_score();
+        }
+        }
+
+        function atticstairwellup_check () {
+
+        if ( xcord === 1 && ycord === -1&& zcord ===0) {
+
+        southbutton.disabled = true;
+        eastbutton.disabled = true;
+        var message = "You enter a room with a staircase leading up... type -up- to go up";
+        var location = "Attic Stairwell";
+        updateDisplay(message);
+        updateLocation(location);
+        first_atticstairwellup_score();
+        }
+        }
+
+        function basementstairwell_check() {
+
+        if ( xcord === -1 && ycord === 1 && zcord ===-1) {
+
+        westbutton.disabled = true;
+        northbutton.disabled = true;
+        var message = "You Enter the Basement Stairwell with stairs leading up type --up-- to go up the stairs";
+        var location = "Basement Stairwell";
+        updateDisplay(message);
+        updateLocation(location);
+        first_basementstairwell_score();
+        }
+        }
+
+        function basementstorageroom_check() {
+
+        if ( xcord === 0 && ycord === 1 && zcord === -1) {
+
+        northbutton.disabled = true;
+        var message = "You Enter the Basement in the north region";
+        var location = " Storage Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_basementstorageroom_score();
+        }
+        }
+
+        function basementwineceller_check () {
+
+        if ( xcord === 1 && ycord === 1 && zcord === -1) {
+
+        northbutton.disabled = true;
+        eastbutton.disabled = true;
+        var message = "You Enter the Basement in the north east region";
+        var location = " Wine Celler";
+        updateDisplay(message);
+        updateLocation(location);
+        first_basementwineceller_score();
+        }
+        }
+
+        function basementbathroom_check () {
+
+           if ( xcord === -1 && ycord === 0 && zcord === -1) {
+
+              westbutton.disabled = true;
+              var message = "You Enter the Basement in the west region";
+              var location = " Basement Bathroom";
+              updateDisplay(message);
+              updateLocation(location);
+              first_basementbathroom_score();
+           }
+        }
+
+        function basementbreakerroom_check () {
+
+           if ( xcord === 0 && ycord === 0 && zcord === -1) {
+
+        var message = "You Enter the Basement in the center region you see a box in the center with a sign that reads --Turn on power-- type --use-- to see what it does";
+        var location = " B Breaker Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_basementbreakerroom_score();
+           }
+        }
+
+        function basementtoolroom_check () {
+
+        if ( xcord === 1 && ycord === 0 && zcord === -1) {
+
+        eastbutton.disabled = true;
+        var message = "You Enter the Basement Tool Room, There are various garden tools scattered around and a large axe on a table in the middle of the room type --pickup-- to pick up the axe ";
+        var location = "Tool Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_basementtoolroom_score();
+        }
+        }
+
+        function basementshrineroom_check () {
+
+           if ( xcord === -1 && ycord === -1 && zcord === -1) {
+
+        westbutton.disabled = true;
+        southbutton.disabled = true;
+        var message = "You Enter a room with a strange shrine in it";
+        var location = " Shrine Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_basementshrineroom_score();
+           }
+        }
+
+        function basementbillardroom_check () {
+
+           if ( xcord === 0 && ycord === -1 && zcord === -1) {
+ 
+              southbutton.disabled = true;
+              var message = "You Enter the Billard Room, A strange creature is standing on the table it would be best to leave if you dont have a weapon";
+              var location = " Billard Room";
+              updateDisplay(message);
+              updateLocation(location);
+              first_basementbillardroom_score();
+           }
+        }
+
+        function basementwashroom_check () {
+
+           if ( xcord === 1 && ycord === -1 && zcord === -1) {
+
+              southbutton.disabled = true;
+              eastbutton.disabled = true;
+              var message = "You Enter the Wash Room there is nothing useful in this room";
+              var location = " Wash Room";
+              updateDisplay(message);
+              updateLocation(location);
+              first_basementwashroom_score();
+           }
+        }
+
+        function atticstairwelldown_check () {
+
+           if ( xcord === 1 && ycord === -1 && zcord === 1) {
+
+              southbutton.disabled = true;
+              eastbutton.disabled = true;
+              var message = "You Enter a stairwell type --down-- to go down";
+              var location = "Attic Stairwell";
+              updateDisplay(message);
+              updateLocation(location);
+              first_atticstairwell_score();
+           }
+        }
+
+        function atticgeustroom_check () {
+
+        if ( xcord === 0 && ycord === 1 && zcord === 1) {
+
+        northbutton.disabled = true;
+        var message = "You Enter the geust best room sleep in the bed?";
+        var location = "Geust Room";
+        updateDisplay(message);
+        updateLocation(location);
+        first_atticgeustroom_score();
+        }
+        }
+
+        function atticmasterbedroom_check() {
+
+        if ( xcord === -1 && ycord === 1 && zcord === 1) {
+
+        westbutton.disabled = true;
+        northbutton.disabled = true;
+        var message = "You Enter a master bedroom with nobody around";
+        var location = "Master Bedroom";
+        updateDisplay(message);
+        updateLocation(location);
+        first_atticmasterbedroom_score();
+        }
+        }
+
+        function atticbalcony_check () {
+
+        if ( xcord === 0 && ycord === -1 && zcord === 1) {
+
+        southbutton.disabled = true;
+        var message = "You enter a balcony room with a great view of a lake";
+        var location = "Balcony";
+        updateDisplay(message);
+        updateLocation(location);
+        first_atticbalcony_score();
+        }
+        }
+
+        function atticbathroom_check () {
+
+           if ( xcord === -1 && ycord === -1 && zcord === 1) {
+
+              southbutton.disabled = true;
+              westbutton.disabled = true;
+              var message = " Your enter a bathroom with a key on the counter type --pickupkey-- to pick up the key";
+              var location = "Attic Bath Room";
+              updateDisplay(message);
+              updateLocation(location);
+              first_atticbathroom_score();
+           }
+        }
+
+        function atticcloset_check() {
+
+           if ( xcord === -1 && ycord === 0 && zcord === 1) {
+
+              westbutton.disabled = true;
+              var message = "You Enter a closet with clothes in it";
+              var location = "Closet";
+              updateDisplay(message);
+              updateLocation(location);
+              first_atticcloset_score();
+           }
+        }
+
+        function atticparlor_check() {
+
+           if ( xcord === 0 && ycord === 0 && zcord === 1) {
+
+              var message = "You Enter a creepy empty parlor";
+              var location = " Parlor";
+              updateDisplay(message);
+              updateLocation(location);
+              first_atticparlor_score();
+           }
+        }
+
+        function atticstudy_check() {
+
+           if ( xcord === 1 && ycord === 1 && zcord === 1) {
+
+              northbutton.disabled = true;
+              eastbutton.disabled = true;
+              var message = "You Enter a Study with many books... one is open a table in the middle of the room type --read-- to read the contents of the page ";
+              var location = " Study";
+              updateDisplay(message);
+              updateLocation(location);
+              first_atticstudy_score();
+           }
+        }
+
+        function atticshitroom_check() {
+
+           if ( xcord === 1 && ycord === 0 && zcord === 1) {
+
+              eastbutton.disabled = true;
+              var message = "You Enter with lots of shit";
+              var location = " Lounge";
+              updateDisplay(message);
+              updateLocation(location);
+              first_atticshitroom_score();
+           }
+        }
+
+        function firstfloorlocationscheck() { // checks all locations for the first floor
+
+           firstfloorstairwell_check();
+           fireplaceroom_check();
+           kitchen_check();
+           grandroom_check();
+           startroom_check();
+           diningroom_check();
+           ballroom_check();
+           foyer_check();
+           atticstairwellup_check();
+        }
+
+        function basementfloorlocationscheck() { // checks all locations for the basement floor
+
+           basementstairwell_check();
+           basementstorageroom_check();
+           basementwineceller_check();
+           basementbathroom_check();
+           basementbreakerroom_check();
+           basementtoolroom_check();
+           basementshrineroom_check();
+           basementbillardroom_check();
+           basementwashroom_check();
+        }
+
+        function atticlocationscheck() { // checks all of the locations in the attic
+
+           atticstairwelldown_check();
+           atticgeustroom_check();
+           atticmasterbedroom_check();
+           atticbalcony_check();
+           atticbathroom_check();
+           atticcloset_check();
+           atticparlor_check();
+           atticstudy_check();
+           atticshitroom_check();
+        }
+
+        function checkLoc() { // checks to see where the player is
+
+           checkbound(); // checks boundries and doesnt let the player leave the game
+           resetbuttons(); // resets the values of button values
+           atticlocationscheck(); // checks the locations for the attic
+           firstfloorlocationscheck(); // checks the first floor locations
+           basementfloorlocationscheck(); // checks the basement locations
+        }
+
+        function roomstorecheck() {
+
+           atticstairwelldown_check();
+           basementstairwell_check();
+           firstfloorstairwell_check();
+           atticstairwellup_check();
+        }
+
+        function error() { // tells the player if they enter a invalid command
+
+           var message = " I do not reconize that, please try agian";
+           updateDisplay(message);
+        }
+
+        function updateScore(parascore) { // updates the score
+
+           var ta = document.getElementById("scoreupdate");
+           ta.value = score;
+        }
+
+        function updateDisplay (msg) { // updates the textarea
+
+           var ta = document.getElementById("textupdate");
+           ta.value= msg + "\n" + "\n" + ta.value;
+        }
+
+        function updateLocation (loc) { // this updates the players location
+
+           var ta = document.getElementById("locupdate");
+           ta.value = loc;
+        }
+
+        function updateTurns (turn) {
+
+           var ta = document.getElementById("turnupdate");
+           ta.value = turn;
+        }
+
+        function checkxposbound () {
+
+           if (xcord > 1) {
+
+              xcord = xcord - 1;
+           }
+        }
+
+        function checkxnegbound () {
+
+           if (xcord < -1 ) {
+
+              xcord = xcord + 1;
+           }
+        }
+
+        function checkyposbound () {
+
+           if (ycord > 1 ) {
+
+              ycord = ycord - 1;
+           }
+        }
+
+        function checkynegbound () {
+
+           if (ycord < -1 ) {
+
+              ycord = ycord + 1;
+           }
+        }
+
+        function checkzposbound () {
+
+           if (zcord > 1) {
+ 
+              zcord = zcord - 1;
+           }
+        }
+
+        function checkznegbound() {
+
+           if (zcord < -1) {
+
+              zcord = zcord + 1;
+           }
+        }
+
+        function checkbound () { // this checks to make sure that the player does not walk out of the space of the game
+
+           checkxposbound();
+           checkxnegbound();
+           checkyposbound();
+           checkynegbound();
+        }
+
+        function checkinputnorth () {
+
+           var check = document.getElementById("txtcmd");
+
+           if ( ( check.value === "n") || (check.value === "N") ) {
+
+              goNorth();
+              check.value = "";
+           }
+        }
+
+        function checkinputsouth () {
+
+           var check = document.getElementById("txtcmd");
+ 
+           if ( ( check.value === "s") || (check.value === "S") ) {
+
+              goSouth();
+              check.value = "";
+           }
+        }
+
+        function checkinputeast () {
+
+           var check = document.getElementById("txtcmd");
+
+           if ( ( check.value === "e") || (check.value === "E") ) {
+
+             goEast();
+             check.value = "";
+           }
+        }
+
+        function checkinputwest () {
+
+           var check = document.getElementById("txtcmd");
+ 
+           if ( ( check.value === "w") || (check.value === "W" )) {
+
+              goWest();
+              check.value = "";
+           }
+        }
+
+        function checkmiddlestairsdown () {
+
+           var check = document.getElementById("txtcmd");
+
+           if ( (xcord === -1 && ycord === 1 && zcord ===0) && (check.value === "down") ) {
+
+              godown();
+              check.value = ""
+           }
+        }
+
+        function checkbasstairsup(){
+
+           var check = document.getElementById("txtcmd");
+
+           if ((xcord === -1 && ycord === 1 && zcord ===-1) && (check.value === "up")) {
+
+              goup();
+              check.value = "";
+           }
+        }
+
+        function checkatticstairsup () {
+
+           var check = document.getElementById("txtcmd");
+
+           if ((xcord === 1 && ycord === -1 && zcord === 0) && (check.value === "up")) {
+              goup();
+              check.value = "";
+           }
+        }
+
+        function checkatticstairsdown () {
+
+           var check = document.getElementById("txtcmd");
+
+           if ((xcord === 1 && ycord === -1 && zcord === 1) && (check.value === "down")) {
+
+              godown();
+              check.value = "";
+           }
+        }
+
+        function stairscheck () {
+
+           checkmiddlestairsdown();
+           checkbasstairsup();
+           checkatticstairsup();
+           checkatticstairsdown();
+           roomstorecheck(); // rechecks the locations that dont get checked
+        }
+
+        function pickupaxe() {
+
+           var check = document.getElementById("txtcmd");
+
+           if ( (xcord === 1 && ycord === 0 && zcord === -1) && ( axe === false) && (check.value === "pickup") ) {
+
+              axe = true;
+              check.value = "";
+           }
+        }
+
+        function changelights() {
+
+           var check = document.getElementById("txtcmd");
+
+           if ( (xcord === 0 && ycord === 0 && zcord === -1) && ( lights === false) && (check.value === "use") ) {
+
+              lights = true;
+              alert("lights are now on !!!");
+              check.value = "";
+           }
+        }
+
+        function findkey () {
+
+
+
+        }
+
+        function checkinput () {
+
+           stairscheck();
+           checkinputnorth();
+           checkinputsouth();
+           checkinputeast();
+           checkinputwest();
+           pickupaxe();
+           changelights();
+        }
+
+        function resetbuttons () {
+
+           westbutton.disabled = false;
+           southbutton.disabled = false;
+           eastbutton.disabled = false;
+           northbutton.disabled = false;
+        }
+
+        </script>
+        </head>
+        <body>
+        Haunted House By Joe Archer
+        <br>
+        <br>
+        <textarea rows="7" cols="55" id = "textupdate">Player awakens in the middle of a darkened room. Candles light a propped door to the north. A lantern filled with oil and a box of matches can be found on a table next to you. Three other exits can be seen. A lantern might be needed to explore the north exit.
+        </textarea>
+        <br>
+
+        <input type = "button"
+        value = "North"
+        id = "northbutton"
+        onclick = "goNorth();">
+        <br>
+
+        <input type = "button"
+        value = "West"
+        id = "westbutton"
+        onclick = "goWest();">
+
+
+        <input type = "button"
+        value = "East"
+        id = "eastbutton"
+        onclick = "goEast();">
+        <br>
+
+        <input type = "button"
+        value = "South"
+        id = "southbutton"
+        onclick = "goSouth();">
+        <br><br>
+        <input type = "button"
+        value = "Enter Value"
+        onclick = "checkinput();">
+
+        <input type = "text"
+        id = "txtcmd">
+
+        <br><br>
+
+        Your Current Location is...
+
+        <input type = "text"
+        id ="locupdate">
+
+        <br><br>
+
+        Your Current Score is...
+
+        <input type = "text"
+        id = "scoreupdate">
+
+        <br><br>
+
+        Number of Turns Passed...
+
+        <input type = "text"
+        id = "turnupdate">
+
+        <br><br><br><br><br>
+        Email me at <a href = "mailto:Joseph.Archer1@marist.edu"> Joseph Archer </a>
+        </body>
+        </html>
+
