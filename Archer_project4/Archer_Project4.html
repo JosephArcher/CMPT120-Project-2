@@ -1,0 +1,190 @@
+ <!DOCTYPE html>
+   <html>
+     <head>
+       <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+       <meta name="author" content="Joe Archer" />
+	   <script type="text/javascript" src="gameloc.js"></script>
+	   <script type="text/javascript" src="gamescore.js"></script>
+	   <script type="text/javascript" src="gameother.js"></script>
+     <title>My First Game</title>
+     <style>
+       .footer {font-style: italic;}
+     </style>
+     <script type = "text/javascript">
+		
+		
+		
+	    var first_firstfloorstairwell = true;
+	    var first_fireplaceroom = true;
+        var first_kitchen = true;
+        var first_grandroom = true;
+        var first_diningroom = true;
+        var first_ballroom = true;
+        var first_foyer = true;
+        var first_atticstairwell = true;
+        var first_basementstairwell= true;
+        var first_basementstorageroom= true;
+        var first_basementwineceller= true;
+        var first_basementbathroom= true;
+        var first_basementbreakerroom= true;
+        var first_basementtoolroom= true;
+        var first_basementshrineroom= true;
+        var first_basementbillardroom= true;
+        var first_basementwashroom= true;
+        var first_atticstairwellup= true;
+        var first_atticgeustroom= true;
+        var first_atticmasterbedroom= true;
+        var first_atticbalcony= true;
+        var first_atticbathroom= true;
+        var first_atticcloset= true;
+        var first_atticparlor= true;
+        var first_atticstudy= true;
+        var first_atticshitroom= true;
+	
+        var axe = false;
+        var lights = false;
+        var key = false;
+  
+	    var inventory = "Your Current Inventory is:" + " ";
+
+        var xcord = 0;
+        var ycord = 0;
+        var zcord = 0;
+
+        var score = 0;
+
+        var numberofturns = 0;
+
+        function goup() {
+
+           zcord = zcord + 1;
+        }
+
+        function godown() {
+
+           zcord = zcord -1;
+        }
+
+        function goNorth() {
+
+           ycord = ycord + 1;
+           xcord = xcord + 0;
+           numberofturns = numberofturns + 1;
+           updateTurns(numberofturns);
+           checkLoc();
+        }
+
+        function goEast() {
+
+           xcord = xcord + 1;
+           ycord = ycord + 0;
+           numberofturns = numberofturns + 1;
+           updateTurns(numberofturns);
+           checkLoc();
+        }
+
+        function goSouth() {
+
+           xcord = xcord + 0;
+           ycord = ycord - 1;
+           numberofturns = numberofturns + 1;
+           updateTurns(numberofturns);
+           checkLoc();
+        }
+
+        function goWest() {
+
+           xcord = xcord - 1;
+           ycord = ycord + 0;
+           numberofturns = numberofturns + 1;
+           updateTurns(numberofturns);
+           checkLoc();
+        }
+		
+        function error() { // tells the player if they enter a invalid command
+
+           var message = "Invalid Command";
+           updateDisplay(message);
+        }
+
+        function updateScore(parascore) { // updates the score
+
+           var ta = document.getElementById("scoreupdate");
+           ta.value = score;
+        }
+
+        function updateDisplay (msg) { // updates the textarea
+
+           var ta = document.getElementById("textupdate");
+           ta.value= msg + "\n" + "\n" + ta.value;
+        }
+
+        function updateLocation (loc) { // this updates the players location
+
+           var ta = document.getElementById("locupdate");
+           ta.value = loc;
+        }
+
+        function updateTurns (turn) {
+
+           var ta = document.getElementById("turnupdate");
+           ta.value = turn;
+        }
+		
+	function init () {
+	
+	   var message = "Player awakens in the middle of a darkened room. Candles light a propped door to the north. A lantern filled with oil and a box of matches can be found on a table next to you. Three other exits can be seen. A lantern might be needed to explore the north exit.";
+	   updateDisplay(message);
+	}
+     </script>
+     </head>
+     <body onload = "init();" >
+        Haunted House By Joe Archer
+        <br>
+        <br>
+        <textarea rows="7" cols="55" id = "textupdate">
+        </textarea>
+        <br>
+        <input type = "button"
+        value = "North"
+        id = "northbutton"
+        onclick = "goNorth();">
+        <br>
+        <input type = "button"
+        value = "West"
+        id = "westbutton"
+        onclick = "goWest();">
+        <input type = "button"
+        value = "East"
+        id = "eastbutton"
+        onclick = "goEast();">
+        <br>
+        <input type = "button"
+        value = "South"
+        id = "southbutton"
+        onclick = "goSouth();">
+        <br><br>
+        <input type = "button"
+        value = "Enter Value"
+        onclick = "checkdirectionalinputs();">
+        <input type = "text"
+        id = "txtcmd">
+        <br><br>
+        Your Current Location is...
+        <input type = "text"
+        id ="locupdate">
+        <br><br>
+        Your Current Score is...
+        <input type = "text"
+        id = "scoreupdate">
+        <br><br>
+        Number of Turns Passed...
+        <input type = "text"
+        id = "turnupdate">
+        <br><br><br><br><br>
+        Email me at <a href = "mailto:Joseph.Archer1@marist.edu"> Joseph Archer </a>
+		<img src="Basement.png" alt="">
+		<img src="FirstFloor.jpg" alt=""> 
+		<img src="Attic.jpg" alt=""> 
+     </body>
+   </html>
