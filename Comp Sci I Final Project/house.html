@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+   <html>
+     <head>
+       <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+       <meta name="author" content="Joe Archer" />
+	   <script type="text/javascript" src="houselocations.js"></script>
+	   <script type="text/javascript" src="SCORE.js"></script>
+	   
+     <title>Final Project </title>
+     <style>
+       .footer {font-style: italic;}
+     </style>
+     <script type = "text/javascript">
+
+		var currentlocation = 2;
+		var newlocation;
+		var score = 0;
+		var turn = 0;
+		var firststudy = true;
+		var firstlounge = true;
+		var firstkitchen = true;
+		var firstgrand = true;
+		var firstdining = true;
+		var firstball = true;
+		var firstparlor = true;
+		var firstfoyer = true;
+		var firststorage = true;
+		var firsttool = true;
+		var firstcloset = true;
+		var firstbath = true;
+		var locations = new Array (12);
+
+	    var inventory = new Array (1);
+		inventory[0] = "Your Current Inventory is";
+
+		var nav = [      // N0  S1  E2  W3
+					/*0*/  [-1, 2, -1, -1],
+					/*1*/  [-1, 5,  2, -1],
+					/*2*/  [ 0, 6,  3,  1],
+					/*3*/  [-1,  7, -1, 2],
+					/*4*/  [-1, -1, 5, -1],
+					/*5*/  [1,   9, 6,  4],
+					/*6*/  [2,  10, 7,  5],
+					/*7*/  [3,  11, 8,  6],
+					/*8*/  [-1, -1, -1, 7],
+					/*9*/  [5, -1, 10, -1],
+					/*10*/ [6, 12, 11,  9],
+					/*11*/ [7, -1, -1, 10],
+					/*12*/ [10, -1, -1,-1] ];
+
+		function Location (_id, _name , _description , _item,_firstvisit) {
+
+		   this.id          = _id;
+		   this.name        = _name;
+		   this.description = _description;
+		   this.item        = _item;
+		   this.firstvisit  = _firstvisit;
+
+		   this.toString = function () {
+
+		   var retVal = "";
+		   retVal = "[Location]"
+		             "Id" + this.id
+					 "Name" + this.name
+					 "Description" + this.description
+					 "Item" + this.item
+		  return retVal;
+		   }
+		}
+
+		function Item (_id , _name , _description,_taken) {
+
+		   this.id          = _id;
+		   this.name        = _name;
+		   this.description = _description;
+		   this.taken       =_taken;
+
+
+		this.toString = function () {
+
+		   var retVal = "";
+		   retVal = "[Item]"
+		             "Id" + this.id
+					 "Name" + this.name
+					 "Description" + this.description
+		  return retVal;
+		   }
+		}
+		function createRooms() {
+
+		   locations[0]  = new Location  ("Dining",  "Dining Room",  "Player Enters a Dining Room... The table is set and the food is still warm",           "",      false);
+		   locations[1]  = new Location  ("Lounge",  "Lounge",       "Player Enters a room with a lit fireplace",                                            "",      false);
+		   locations[2]  = new Location  ("Start",   "Spawn Room",   "Player Enter a Familir Room Perhaps this is the room the Player Started in",           "",      false);
+		   locations[3]  = new Location  ("Storage", "Storage Room", "Player Enters a Storage Room",                                                         "Knife", false);
+		   locations[4]  = new Location  ("Study",   "Study",        "Player Enters the Study... A book is open on the table",                               "Book",  false);
+		   locations[5]  = new Location  ("Kitchen", "Kitchen",      "Player Enters a Kitchen ",                                                             "",      false);
+		   locations[6]  = new Location  ("Ball",    "Ball Room",    "Player Enters the Ball Room",                                                          "",      false);
+		   locations[7]  = new Location  ("Tool",    "Tool Room",    "Player Enters the Tool Room",                                                          "",      false);
+		   locations[8]  = new Location  ("Bathroom","Bathroom",     "Player Enters the Bath Room...",                                                       "",      false);
+		   locations[9]  = new Location  ("Grand",   "Grand Room",   "Player Enters The Grand Room",                                                         "Key",   false);
+		   locations[10] = new Location  ("Parlor",  "Parlor",       "Player Enters a strange parlor",                                                       "",      false);
+		   locations[11] = new Location  ("Closet",  "Closet",       "Player Enters the Closet",                                                             "Rope",  false);
+		   locations[12] = new Location  ("Foyer",   "Foyer",        "Player Enters the Foyer...",                                                           "",      false);
+		}
+		function createItems() {
+
+		    Book  = new Item ("A","Book",   "Player Finds a helpful book on survival...This will help me survive when I escape from this house",false);
+		    Knife = new Item ("B","Knife",  "Player Finds a hunting knife...This will help me hunt when I esacpe the from this house",false);
+		    Key   = new Item ("C","Key",    "Player Finds a key...This will open the front door",false);
+		    Rope  = new Item ("D","Rope",   "Player Finds a rope...This will help me survive when I escape from this house",false);
+		}
+		function move(dir) {
+		   turn = turn + 1;
+		   updateTurns (turn);
+
+		   var newlocation = nav[currentlocation][dir];
+
+		   if (newlocation === -1) {
+		      updateDisplay("Cant Go That way");
+		   }
+		   else{
+		      currentlocation = newlocation;
+		      displayCurrentLocation();
+		   }
+		}
+		 function displayCurrentLocation() {
+           switch (currentlocation) {
+              case 0  : Loc0() ; break;
+			  case 1  : Loc1() ; break;
+			  case 2  : Loc2() ; break;
+			  case 3  : Loc3() ; break;
+			  case 4  : Loc4() ; break;
+			  case 5  : Loc5() ; break;
+			  case 6  : Loc6() ; break;
+			  case 7  : Loc7() ; break;
+			  case 8  : Loc8() ; break;
+			  case 9  : Loc9() ; break;
+			  case 10 : Loc10(); break;
+			  case 11 : Loc11(); break;
+			  case 12 : Loc12(); break;
+		   }
+	    }
+		function check() {
+			var check = document.getElementById("txtcmd");
+			switch (check.value)
+			{
+			case "n":
+			   move(0);
+               check.value = "";
+			   break;
+			case "N":
+			    move(0);
+                check.value = "";
+				break;
+			case "s":
+			   move(1);
+               check.value = "";
+			   break;
+			case "S":
+			   move(1);
+               check.value = "";
+			   break;
+			case "e":
+			   goEast(2);
+               check.value = "";
+			   break;
+			case "E":
+			   move(2);
+               check.value = "";
+			   break;
+			case "w":
+			   move(3);
+              check.value = "";
+			  break;
+			case "W":
+			  move(3);
+              check.value = "";
+			  break;
+			case "i":
+			   updateDisplay(inventory);
+			   check.value ="";
+			   break;
+			case "help":
+			   help();
+			   check.value ="";
+			   break;
+			default:
+			  check.value = "";
+			  updateDisplay("Invalid Command if you need help type help for directions");
+			 }
+		}
+
+		 function updateLocation (loc) { // this updates the players location
+           var ta = document.getElementById("locupdate");
+           ta.value = loc;
+        }
+
+		 function updateScore(parascore) { // updates the score
+           var ta = document.getElementById("scoreupdate");
+           ta.value = score;
+        }
+		 function updateTurns (turn) {
+           var ta = document.getElementById("turnupdate");
+           ta.value = turn;
+        }
+		 function updateDisplay (msg) { // updates the textarea
+           var ta = document.getElementById("textupdate");
+           ta.value= msg + "\n" + "\n" + ta.value;
+        }
+		function resetbuttons () {
+		
+		   var north = document.getElementById("northbutton");
+		   var south = document.getElementById("southhbutton");
+		   var east = document.getElementById("eastbutton");
+		   var west = document.getElementById("westbutton");
+		   north.disabled = false;
+		   eastbutton.disabled = false;
+		   westbutton.disabled = false;
+		   southbutton.disabled = false;
+		}
+		function buttondisabled () {
+		
+		   var north = document.getElementById("northbutton");
+		   var south = document.getElementById("southhbutton");
+		   var east = document.getElementById("eastbutton");
+		   var west = document.getElementById("westbutton");
+		}
+		function init () {
+		   createRooms();
+		   createItems();
+		}
+		function help () {
+		   var msg = "To play: Type 'n' 's' 'e' 'w' or 'N' 'S' 'E' 'W' or click the buttons, to move throughout the game , type i to view your inventory";
+		   updateDisplay(msg);
+
+		}
+	 </script>
+	 </head>
+	 <body onload = "init()">
+	  <textarea rows="7" cols="55" id = "textupdate">Player awakens in the middle of a darkened room. Candles light a propped door to the north. A lantern filled with oil and a box of matches can be found on a table next to you. Three other exits can be seen. A lantern might be needed to explore the north exit.
+       </textarea>
+	   <br>
+	   <input type = "button"
+        value = "North"
+        id = "northbutton"
+        onclick = "move(0);">
+        <br>
+		<input type = "button"
+        value = "South"
+        id = "southbutton"
+        onclick = "move(1);">
+		<br>
+	    <input type = "button"
+        value = "East"
+        id = "eastbutton"
+        onclick = "move(2);">
+        <br>
+        <input type = "button"
+        value = "West"
+        id = "westbutton"
+        onclick = "move(3);">
+        <br><br>
+        <input type = "button"
+        value = "Enter Value"
+        onclick = "check();">
+        <input type = "text"
+        id = "txtcmd">
+        <br><br>
+        Your Current Location is...
+        <input type = "text"
+		value = "Start"
+        id ="locupdate">
+        <br><br>
+        Your Current Score is...
+        <input type = "text"
+        id = "scoreupdate">
+        <br><br>
+        Number of Turns Passed...
+        <input type = "text"
+        id = "turnupdate">
+        <br><br><br><br><br>
+        Email me at <a href = "mailto:Joseph.Archer1@marist.edu"> Joseph Archer </a>
+	 </body>
+	 </html>
