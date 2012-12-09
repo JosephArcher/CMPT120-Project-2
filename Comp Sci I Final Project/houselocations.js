@@ -1,3 +1,4 @@
+//loc
 		function Loc0() {
 		   buttondisabled ();
 		   resetbuttons ();

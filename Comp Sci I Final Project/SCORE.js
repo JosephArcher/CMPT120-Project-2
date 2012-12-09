@@ -1,4 +1,4 @@
-
+//score
 		function Loc0score () {
 		
 		   if (locations[0].firstvisit === false) {
