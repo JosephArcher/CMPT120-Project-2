@@ -120,5 +120,4 @@
 		   eastbutton.disabled = true;
 		   westbutton.disabled = true;
 		   southbutton.disabled = true;
-		   winner();
 		}

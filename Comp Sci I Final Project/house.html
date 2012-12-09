@@ -5,7 +5,7 @@
        <meta name="author" content="Joe Archer" />
 	   <script type="text/javascript" src="houselocations.js"></script>
 	   <script type="text/javascript" src="SCORE.js"></script>
-	   <img src="finalprojectmap.jpg" alt="The Map"width="500" height="400"> 
+	   
      <title>Final Project </title>
      <style>
        .footer {font-style: italic;}
@@ -91,16 +91,16 @@
 		   locations[0]  = new Location  ("Dining",  "Dining Room",  "Player Enters a Dining Room... The table is set and the food is still warm",           "",      false);
 		   locations[1]  = new Location  ("Lounge",  "Lounge",       "Player Enters a room with a lit fireplace",                                            "",      false);
 		   locations[2]  = new Location  ("Start",   "Spawn Room",   "Player Enter a Familir Room Perhaps this is the room the Player Started in",           "",      false);
-		   locations[3]  = new Location  ("Storage", "Storage Room", "Player Enters a Storage Room, this is the room where the knife was found",             "Knife", false);
+		   locations[3]  = new Location  ("Storage", "Storage Room", "Player Enters a Storage Room",                                                         "Knife", false);
 		   locations[4]  = new Location  ("Study",   "Study",        "Player Enters the Study... A book is open on the table",                               "Book",  false);
 		   locations[5]  = new Location  ("Kitchen", "Kitchen",      "Player Enters a Kitchen ",                                                             "",      false);
 		   locations[6]  = new Location  ("Ball",    "Ball Room",    "Player Enters the Ball Room",                                                          "",      false);
 		   locations[7]  = new Location  ("Tool",    "Tool Room",    "Player Enters the Tool Room",                                                          "",      false);
 		   locations[8]  = new Location  ("Bathroom","Bathroom",     "Player Enters the Bath Room...",                                                       "",      false);
-		   locations[9]  = new Location  ("Grand",   "Grand Room",   "Player Enters The Grand Room, the key to the front door was found here",               "Key",   false);
+		   locations[9]  = new Location  ("Grand",   "Grand Room",   "Player Enters The Grand Room",                                                         "Key",   false);
 		   locations[10] = new Location  ("Parlor",  "Parlor",       "Player Enters a strange parlor",                                                       "",      false);
-		   locations[11] = new Location  ("Closet",  "Closet",       "Player Enters the Closet, the rope was found here",                                    "Rope",  false);
-		   locations[12] = new Location  ("Foyer",   "Foyer",        "Player Enters the Foyer... The Front Door is locked",                                  "",      false);
+		   locations[11] = new Location  ("Closet",  "Closet",       "Player Enters the Closet",                                                             "Rope",  false);
+		   locations[12] = new Location  ("Foyer",   "Foyer",        "Player Enters the Foyer...",                                                           "",      false);
 		}
 		function createItems() {
 
@@ -228,35 +228,16 @@
 		function init () {
 		   createRooms();
 		   createItems();
-		   var msg = "Player awakens in the middle of a dark house in the middle of the woods, the front door in the foyer is locked and the player has no supplies, find the rope , knife and book on survival along with the key to the front door to win";
-		   updateDisplay(msg);
-		   
 		}
 		function help () {
 		   var msg = "To play: Type 'n' 's' 'e' 'w' or 'N' 'S' 'E' 'W' or click the buttons, to move throughout the game , type i to view your inventory";
 		   updateDisplay(msg);
 
 		}
-		
-		function winner () {
-		
-		   if  ((Book.taken === true && Knife.taken === true && Rope.taken === true && Key.taken === true )) {
-		     var msg = "Congragulations The Player was able to gather the rope key book and knife he was able escape the house and Survive the wilderness untill he is found by hikers!!";
-		     updateDisplay(msg);
-			 northbutton.disabled = true;
-		     eastbutton.disabled = true;
-		     southhbutton.disabled = true;
-		     westbutton.disabled = true;
-			 
-		   }
-		}
 	 </script>
 	 </head>
 	 <body onload = "init()">
-	 Escape The House!!!!
-	 <br><br>
-	 
-	  <textarea rows="7" cols="55" id = "textupdate">
+	  <textarea rows="7" cols="55" id = "textupdate">Player awakens in the middle of a darkened room. Candles light a propped door to the north. A lantern filled with oil and a box of matches can be found on a table next to you. Three other exits can be seen. A lantern might be needed to explore the north exit.
        </textarea>
 	   <br>
 	   <input type = "button"
@@ -265,19 +246,19 @@
         onclick = "move(0);">
         <br>
 		<input type = "button"
-        value = "East"
-        id = "eastbutton"
-        onclick = "move(2);">
-		<input type = "button"
-        value = "West"
-        id = "westbutton"
-        onclick = "move(3);">
-		<br>
-		<input type = "button"
         value = "South"
         id = "southbutton"
         onclick = "move(1);">
 		<br>
+	    <input type = "button"
+        value = "East"
+        id = "eastbutton"
+        onclick = "move(2);">
+        <br>
+        <input type = "button"
+        value = "West"
+        id = "westbutton"
+        onclick = "move(3);">
         <br><br>
         <input type = "button"
         value = "Enter Value"
